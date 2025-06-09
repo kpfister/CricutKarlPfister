@@ -10,6 +10,7 @@ import SwiftUI
 final class CricutGridViewModel: ObservableObject {
   
   @Published var buttons: [CricutShape]?
+  @Published var shapes: [CustomShape] = []
   
   private let service: ButtonAPIProvidable
   
@@ -27,5 +28,33 @@ final class CricutGridViewModel: ObservableObject {
     }
   }
   
+  func addShape(ofType shape: String) {
+    let shaped = CricutCustomShape(from: shape)
+    shapes.append(CustomShape(shape: shaped!))
+  }
+  
+  func removeAllShapes() {
+    shapes = []
+  }
+}
 
+
+enum CricutCustomShape {
+  case Circle
+  case Square
+  case Triangle
+  
+  init?(from title: String) {
+    switch title.lowercased() {
+    case "circle": self = .Circle
+    case "square": self = .Square
+    case "triangle": self = .Triangle
+    default: return nil
+    }
+  }
+}
+
+struct CustomShape: Identifiable {
+  let id = UUID()
+  var shape: CricutCustomShape
 }

@@ -15,22 +15,44 @@ struct ContentView: View {
     NavigationStack {
       GeometryReader { geo in
         let gridItems = Array(repeating: GridItem(.flexible(), spacing: 10), count: 3)
-        ScrollView {
-          LazyVGrid(columns: gridItems) {
-            ForEach(1..<8) { _ in
-              Circle()
+        VStack(spacing: .zero) {
+          ScrollView {
+            LazyVGrid(columns: gridItems) {
+              ForEach(viewModel.shapes) { shape in
+                switch shape.shape {
+                case .Circle:
+                  Circle()
+                case .Square:
+                  Rectangle()
+                    .aspectRatio(1.0, contentMode: .fit)
+                    .foregroundStyle(.teal)
+                case .Triangle:
+                  Circle()
+                }
+              }
+            }
+            .padding()
+          }
+          
+          HStack(alignment: .center) {
+            ForEach(viewModel.buttons ?? [], id: \.self) { button in
+              Button(button.name) {
+                viewModel.addShape(ofType: button.name)
+//                viewModel.addShape(ofType: CricutCustomShape(from: button.name) ?? "circle")
+              }
             }
           }
+          .padding()
         }
-        .padding()
         .toolbar {
           ToolbarItem(placement: .topBarLeading) {
             Button("Clear All") {
+              viewModel.removeAllShapes()
             }
           }
           ToolbarItem(placement: .topBarTrailing) {
             Button("Add") {
-              
+              //              viewModel.addShape(ofType: .Circle)
             }
           }
         }

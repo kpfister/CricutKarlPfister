@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct CricutShapeTopLevel: Decodable {
+struct CricutShapeTopLevel: Decodable, Hashable {
   let buttons: [CricutShape]
 }
 
-struct CricutShape: Decodable {
+struct CricutShape: Decodable, Hashable {
   let name: String
   let drawPath: String
 }
