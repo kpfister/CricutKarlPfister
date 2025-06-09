@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
   
+  @StateObject var viewModel = CricutGridViewModel()
   
   var body: some View {
     NavigationStack {
@@ -34,6 +35,10 @@ struct ContentView: View {
           }
         }
       }
+    }
+    .task {
+      // Perfrom task here
+      await viewModel.fetchButtons()
     }
   }
 }
