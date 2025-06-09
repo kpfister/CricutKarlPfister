@@ -27,7 +27,8 @@ struct ContentView: View {
                     .aspectRatio(1.0, contentMode: .fit)
                     .foregroundStyle(.teal)
                 case .Triangle:
-                  Circle()
+                 Triangle()
+                    .frame(width: 100, height: 100)
                 }
               }
             }
