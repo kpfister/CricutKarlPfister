@@ -8,17 +8,36 @@
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+  
+  
+  var body: some View {
+    NavigationStack {
+      GeometryReader { geo in
+        let gridItems = Array(repeating: GridItem(.flexible(), spacing: 10), count: 3)
+        ScrollView {
+          LazyVGrid(columns: gridItems) {
+            ForEach(1..<8) { _ in
+              Circle()
+            }
+          }
         }
         .padding()
+        .toolbar {
+          ToolbarItem(placement: .topBarLeading) {
+            Button("Clear All") {
+            }
+          }
+          ToolbarItem(placement: .topBarTrailing) {
+            Button("Add") {
+              
+            }
+          }
+        }
+      }
     }
+  }
 }
 
 #Preview {
-    ContentView()
+  ContentView()
 }
