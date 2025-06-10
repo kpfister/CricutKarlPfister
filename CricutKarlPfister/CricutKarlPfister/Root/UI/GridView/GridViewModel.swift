@@ -49,5 +49,4 @@ final class GridViewModel: ObservableObject {
   func removeAllShapes() {
     shapes = []
   }
-  
 }

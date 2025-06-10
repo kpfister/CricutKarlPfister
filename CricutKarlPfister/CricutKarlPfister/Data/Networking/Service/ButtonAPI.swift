@@ -12,11 +12,6 @@ protocol ButtonAPIProvidable: APIDataProvidable {
   func getButtons() async throws -> [CricutButton]
 }
 
-// MARK: - Error Handling
-enum ShapeError: Error {
-  case UnableToGetShapes(_ description: String)
-}
-
 struct ButtonAPIProvider: ButtonAPIProvidable {
   
   func getButtons() async throws -> [CricutButton] {

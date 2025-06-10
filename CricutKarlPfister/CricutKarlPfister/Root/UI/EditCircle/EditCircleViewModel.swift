@@ -10,7 +10,6 @@ final class EditCircleViewModel: ObservableObject {
   
   @ObservedObject var gridViewModel: GridViewModel
   
-  
   init(gridViewModel: GridViewModel) {
     self.gridViewModel = gridViewModel
   }
@@ -27,5 +26,4 @@ final class EditCircleViewModel: ObservableObject {
   func removeAllCircles() {
     gridViewModel.shapes.removeAll(where: {$0.shape == .circle })
   }
-  
 }

@@ -25,7 +25,7 @@ extension APIDataProvidable {
   /// This is used to provide a default implementaion of the `.perform(_ request: URLRequest)` protocol method.
   func perform<Object: Decodable>(_ request: URLRequest, type: Object.Type) async throws -> Object {
     let (data, _ ) = try await URLSession.shared.data(for: request)
-    // MAYBE ADD RESPONSE ERROR?
+    
     do {
       let decoder = JSONDecoder()
       decoder.keyDecodingStrategy = .convertFromSnakeCase

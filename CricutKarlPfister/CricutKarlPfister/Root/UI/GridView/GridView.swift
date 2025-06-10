@@ -63,7 +63,6 @@ struct GridView: View {
         case .square:
           Rectangle()
             .aspectRatio(1.0, contentMode: .fit)
-            .foregroundStyle(.teal)
         case .triangle:
           Triangle()
             .frame(width: 100, height: 100)
@@ -71,7 +70,6 @@ struct GridView: View {
       }
     }
   }
-  
   
   private var buttonsView: some View {
     HStack(alignment: .center) {
@@ -84,7 +82,6 @@ struct GridView: View {
   }
 
 }
-
 
 #Preview {
   GridView()
