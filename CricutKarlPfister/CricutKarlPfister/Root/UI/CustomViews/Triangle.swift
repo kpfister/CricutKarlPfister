@@ -1,5 +1,5 @@
 //
-//  CricutTriangle.swift
+//  Triangle.swift
 //  CricutKarlPfister
 //
 //  Created by Karl Pfister on 6/9/25.

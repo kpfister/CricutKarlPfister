@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - Interface
 protocol ButtonAPIProvidable: APIDataProvidable {
-  func getButtons() async throws -> [CricutShape]
+  func getButtons() async throws -> [CricutButton]
 }
 
 // MARK: - Error Handling
@@ -19,12 +19,12 @@ enum ShapeError: Error {
 
 struct ButtonAPIProvider: ButtonAPIProvidable {
   
-  func getButtons() async throws -> [CricutShape] {
+  func getButtons() async throws -> [CricutButton] {
     guard let url = URL(string: "https://staticcontent.cricut.com/static/test/shapes_001.json") else {
       throw NetworkingError.invalidURL
     }
     let request = URLRequest(url: url)
-    let results = try await perform(request, type: CricutShapeTopLevel.self)
+    let results = try await perform(request, type: CricutButtonTopLevel.self)
     return results.buttons
   }
 }

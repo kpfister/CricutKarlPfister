@@ -11,7 +11,7 @@ import SwiftUI
 struct CricutKarlPfisterApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            GridView()
         }
     }
 }

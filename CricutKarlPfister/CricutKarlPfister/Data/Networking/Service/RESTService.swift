@@ -6,8 +6,6 @@
 //
 
 import Foundation
-
-import Foundation
 /// An abstraction of the `URLSession.shared.data(for: request) Async Await`
 /// ```
 /// func perform(_ request: URLRequest) async throws -> Data)
@@ -26,8 +24,8 @@ extension APIDataProvidable {
   ///
   /// This is used to provide a default implementaion of the `.perform(_ request: URLRequest)` protocol method.
   func perform<Object: Decodable>(_ request: URLRequest, type: Object.Type) async throws -> Object {
-    let (data,response) = try await URLSession.shared.data(for: request)
-    
+    let (data, _ ) = try await URLSession.shared.data(for: request)
+    // MAYBE ADD RESPONSE ERROR?
     do {
       let decoder = JSONDecoder()
       decoder.keyDecodingStrategy = .convertFromSnakeCase
